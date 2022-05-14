@@ -6,9 +6,7 @@ import { useState } from 'react'
 
 export async function getStaticProps() {
 	const teachers = await pg.query('select * from teachers')
-	const students = await pg.query(
-		"select id, first_name || ' ' || last_name name, age, grade from students",
-	)
+	const students = await pg.query('select * from students')
 
 	return {
 		props: {

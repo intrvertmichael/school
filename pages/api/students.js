@@ -16,9 +16,6 @@ export default async function handler(req, res) {
 		// Handle any other HTTP method
 	}
 
-	const updatedStudentsList = await pg.query(
-		"select id, first_name || ' ' || last_name name, age, grade from students",
-	)
-
+	const updatedStudentsList = await pg.query('select * from students')
 	res.status(200).json({ students: updatedStudentsList.rows })
 }
