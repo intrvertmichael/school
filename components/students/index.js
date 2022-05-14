@@ -1,28 +1,14 @@
 import AddStudent from './add'
+import StudentsTable from './table'
 
 const Students = ({ students, setStudents }) => {
 	return (
-		<div>
-			<h2 className='font-bold'>All Students</h2>
-			<table className='w-full'>
-				<thead>
-					<tr className='text-white bg-gray-500'>
-						<th>name</th>
-						<th>age</th>
-						<th>grade</th>
-					</tr>
-				</thead>
+		<div className='flex flex-col gap-2 p-2 rounded bg-slate-800'>
+			<h2 className='w-full p-6 text-3xl font-bold text-center text-white'>
+				Students
+			</h2>
 
-				<tbody>
-					{students.map(student => (
-						<tr key={student.id} className=''>
-							<th>{student.name}</th>
-							<th>{student.age}</th>
-							<th>{student.grade}</th>
-						</tr>
-					))}
-				</tbody>
-			</table>
+			<StudentsTable students={students} setStudents={setStudents} />
 
 			<AddStudent setStudents={setStudents} />
 		</div>

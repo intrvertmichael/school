@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
 const AddStudent = ({ setStudents }) => {
-	const [input, setInput] = useState({
+	const reset = {
 		f_name: '',
 		l_name: '',
 		age: 0,
 		grade: 0,
-	})
+	}
+	const [input, setInput] = useState(reset)
 
 	async function post_student(e) {
 		e.preventDefault()
@@ -24,14 +25,14 @@ const AddStudent = ({ setStudents }) => {
 			}),
 		})
 		const data = await res.json()
-		console.log('data', data)
 		setStudents(data.students)
+		setInput(reset)
 	}
 
 	return (
 		<form
 			onSubmit={post_student}
-			className='flex flex-col p-6 bg-gray-200 rounded-md'
+			className='flex flex-col p-6 bg-white rounded'
 		>
 			<h2 className='mb-6 font-bold'> Add Student: </h2>
 			<label htmlFor='f_name'>First Name:</label>
