@@ -1,13 +1,23 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import pg from '../../db'
+
+import Students from '../../components/students'
+import { useState } from 'react'
 
 export async function getStaticProps() {
+	const students = await pg.query('select * from students')
+
 	return {
-		props: {},
+		props: {
+			students: students.rows,
+		},
 	}
 }
 
 export default function Home(props) {
+	const [students, setStudents] = useState(props.students)
+
 	return (
 		<>
 			<Head>
@@ -17,8 +27,8 @@ export default function Home(props) {
 			</Head>
 
 			<div className={'p-10'}>
-				<Link href='./students'>Students</Link>
-				<h1 className={'text-6xl font-bold'}>School</h1>
+				<Link href='/'>Home</Link>
+				<Students students={students} setStudents={setStudents} />
 			</div>
 		</>
 	)
