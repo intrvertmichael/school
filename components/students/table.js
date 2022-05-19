@@ -16,25 +16,25 @@ const StudentsTable = ({ students, setStudents }) => {
 	return (
 		<div className='p-6 bg-white rounded'>
 			<h3 className='font-bold'>All Students</h3>
-			<table className='w-full'>
+			<table className='w-full text-sm'>
 				<thead>
-					<tr className='text-white bg-gray-500'>
-						<th>first name</th>
-						<th>last name</th>
-						<th>age</th>
-						<th>grade</th>
-						<th>delete</th>
+					<tr className='p-3 text-bold'>
+						<th className="border-2 ">first name</th>
+						<th className="border-2 ">last name</th>
+						<th className="border-2 ">age</th>
+						<th className="border-2 ">grade</th>
+						<th className="border-2 ">delete</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					{students.map(student => (
 						<tr key={student.id} className=''>
-							<th>{student.first_name}</th>
-							<th>{student.last_name}</th>
-							<th>{student.age}</th>
-							<th>{student.grade}</th>
-							<th>
+							<th className="border-2 ">{student.first_name}</th>
+							<th className="border-2 ">{student.last_name}</th>
+							<th className="border-2 ">{student.age}</th>
+							<th className="border-2 ">{student.grade}</th>
+							<th className="border-2 ">
 								<button
 									onClick={() => deleteStudent(student.id)}
 									className='font-bold text-red-600'

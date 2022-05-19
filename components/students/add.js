@@ -75,7 +75,7 @@ const AddStudent = ({ setStudents }) => {
 				className='p-3 border-2'
 			/>
 
-			<input type='submit' className='p-3 bg-yellow-200 border-2' />
+			<input type='submit' className='px-6 py-3 mt-6 bg-yellow-200 rounded border-5 w-max' />
 		</form>
 	)
 }
