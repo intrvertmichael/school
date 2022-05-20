@@ -10,7 +10,14 @@ export default async function handler(req, res) {
 			[req.body.f_name, req.body.l_name, req.body.age, req.body.grade],
 		)
 	}
-	if (req.method === 'DELETE') {
+	else if (req.method === 'PUT') {
+		console.log(req.body.field, req.body.value, req.body.id)
+		await pg.query(
+			`UPDATE students SET ${req.body.field} = $1 WHERE id = $2`,
+			[req.body.value, req.body.id]
+		)
+	}
+	else if (req.method === 'DELETE') {
 		await pg.query('delete from students where id=$1', [req.body.id])
 	} else {
 		// Handle any other HTTP method

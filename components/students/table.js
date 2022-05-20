@@ -1,3 +1,5 @@
+import AddInput from "./add_input"
+
 const StudentsTable = ({ students, setStudents }) => {
 	async function deleteStudent(id) {
 		const res = await fetch('./api/students', {
@@ -30,10 +32,34 @@ const StudentsTable = ({ students, setStudents }) => {
 				<tbody>
 					{students.map(student => (
 						<tr key={student.id} className=''>
-							<th className="border-2 ">{student.first_name}</th>
-							<th className="border-2 ">{student.last_name}</th>
-							<th className="border-2 ">{student.age}</th>
-							<th className="border-2 ">{student.grade}</th>
+							<AddInput
+								id={student.id}
+								field='first_name'
+								text={student.first_name}
+								setStudents={setStudents}
+								/>
+							
+							<AddInput
+								id={student.id}
+								field='last_name'
+								text={student.last_name}
+								setStudents={setStudents}
+								/>
+							
+							<AddInput
+								id={student.id}
+								field='age'
+								text={student.age}
+								setStudents={setStudents}
+								/>
+							
+							<AddInput
+								id={student.id}
+								field='grade'
+								text={student.grade}
+								setStudents={setStudents}
+							/>
+							
 							<th className="border-2 ">
 								<button
 									onClick={() => deleteStudent(student.id)}
