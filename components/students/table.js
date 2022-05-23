@@ -1,7 +1,10 @@
-import React from 'react'
-import AddInput from './add_input'
+import React, { useState } from 'react'
+import Form from './form'
+import Cell from './cell'
 
 const StudentsTable = ({ students, setStudents }) => {
+	const [showForm, setShowForm] = useState(false)
+
 	async function deleteStudent(id) {
 		const res = await fetch('./api/students', {
 			method: 'DELETE',
@@ -31,7 +34,7 @@ const StudentsTable = ({ students, setStudents }) => {
 				{students.map((student, key) => (
 					<React.Fragment key={key}>
 						{fields.map((field, key) => (
-							<AddInput
+							<Cell
 								key={key}
 								id={student.id}
 								field={field}
@@ -50,6 +53,14 @@ const StudentsTable = ({ students, setStudents }) => {
 						</div>
 					</React.Fragment>
 				))}
+			</div>
+
+			<div className='w-full text-sm bg-gray-100 border-2 border-t-0'>
+				{showForm ? (
+					<Form setStudents={setStudents} setShowForm={setShowForm} />
+				) : (
+					<button onClick={() => setShowForm(true)}>+ Add Student</button>
+				)}
 			</div>
 		</div>
 	)

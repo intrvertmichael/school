@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-const AddInput = ({ id, field, text, setStudents }) => {
+const Cell = ({ id, field, text, setStudents }) => {
 	const [input, setInput] = useState(text)
 	const [editing, setEditing] = useState(false)
 	const inputReference = useRef(null)
@@ -62,4 +62,4 @@ const AddInput = ({ id, field, text, setStudents }) => {
 	)
 }
 
-export default AddInput
+export default Cell
