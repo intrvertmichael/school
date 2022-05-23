@@ -16,8 +16,8 @@ export default function Home(props) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<div className={'p-10'}>
-				<Link href='./students'>Students</Link>
+			<div className={'p-20'}>
+				<Link href='/students'>Students</Link>
 				<h1 className={'text-6xl font-bold'}>School</h1>
 			</div>
 		</>

@@ -26,7 +26,7 @@ export default function Home(props) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<div className={'p-10'}>
+			<div className={'p-20'}>
 				<Link href='/'>Home</Link>
 				<Students students={students} setStudents={setStudents} />
 			</div>

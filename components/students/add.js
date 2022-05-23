@@ -30,10 +30,7 @@ const AddStudent = ({ setStudents }) => {
 	}
 
 	return (
-		<form
-			onSubmit={post_student}
-			className='flex flex-col p-6 bg-white rounded'
-		>
+		<form onSubmit={post_student} className='flex flex-col bg-white rounded'>
 			<h2 className='mb-6 font-bold'> Add Student: </h2>
 			<label htmlFor='f_name'>First Name:</label>
 			<input
@@ -75,7 +72,10 @@ const AddStudent = ({ setStudents }) => {
 				className='p-3 border-2'
 			/>
 
-			<input type='submit' className='px-6 py-3 mt-6 bg-yellow-200 rounded border-5 w-max' />
+			<input
+				type='submit'
+				className='px-6 py-3 mt-6 bg-yellow-200 rounded border-5 w-max'
+			/>
 		</form>
 	)
 }

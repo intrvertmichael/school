@@ -36,15 +36,19 @@ const AddInput = ({ id, field, text, setStudents }) => {
 	if (editing) {
 		return (
 			<div className='flex bg-gray-100 border-2 border-r-0'>
-				<form onSubmit={formSubmitted}>
+				<form onSubmit={formSubmitted} className='block w-full'>
 					<input
 						type='text'
 						value={input}
 						onChange={e => setInput(e.target.value)}
 						ref={inputReference}
+						className='block w-full bg-green-100'
 					/>
 				</form>
-				<button onClick={() => setEditing(false)} className='px-2 bg-white'>
+				<button
+					onClick={() => setEditing(false)}
+					className='px-2 text-white bg-black'
+				>
 					X
 				</button>
 			</div>
