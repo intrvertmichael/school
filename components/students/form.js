@@ -46,7 +46,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='f_name'
 						value={input.f_name}
 						onChange={e => setInput({ ...input, f_name: e.target.value })}
-						className='w-full p-3 border-2'
+						className='w-full border-2'
 					/>
 				</p>
 
@@ -60,7 +60,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='l_name'
 						value={input.l_name}
 						onChange={e => setInput({ ...input, l_name: e.target.value })}
-						className='w-full p-3 border-2'
+						className='w-full border-2'
 					/>
 				</p>
 
@@ -74,7 +74,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='age'
 						value={input.age}
 						onChange={e => setInput({ ...input, age: e.target.value })}
-						className='w-full p-3 border-2'
+						className='w-full border-2'
 					/>
 				</p>
 
@@ -88,7 +88,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='grade'
 						value={input.grade}
 						onChange={e => setInput({ ...input, grade: e.target.value })}
-						className='w-full p-3 border-2'
+						className='w-full border-2'
 					/>
 				</p>
 
