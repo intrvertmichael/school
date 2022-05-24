@@ -40,6 +40,13 @@ const Cell = ({ id, field, text, setStudents }) => {
 					<input
 						type='text'
 						value={input}
+						onKeyDown={e => {
+							if (e.key === 'Escape') {
+								setEditing(false)
+								setInput(text)
+								return
+							}
+						}}
 						onChange={e => setInput(e.target.value)}
 						ref={inputReference}
 						className='block w-full bg-green-100'
