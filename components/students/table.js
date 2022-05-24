@@ -14,11 +14,14 @@ const StudentsTable = ({ students, setStudents }) => {
 
 			<div className='grid w-full grid-cols-5 text-sm'>
 				{fields.map((field, key) => (
-					<div key={key} className='bg-gray-100 border-2 border-b-0 border-r-0'>
+					<div
+						key={key}
+						className='p-2 bg-gray-100 border-2 border-b-0 border-r-0'
+					>
 						{field.split('_').join(' ')}
 					</div>
 				))}
-				<div className='bg-gray-100 border-2 border-b-0'>delete</div>
+				<div className='p-2 bg-gray-100 border-2 border-b-0'>delete</div>
 
 				{students.map((student, key) => (
 					<React.Fragment key={key}>
@@ -32,7 +35,7 @@ const StudentsTable = ({ students, setStudents }) => {
 							/>
 						))}
 
-						<div className='border-2 border-b-0'>
+						<div className='p-2 border-2 border-b-0'>
 							<button
 								onClick={() => deleteStudent(student.id, setStudents)}
 								className='font-bold text-red-600'
@@ -44,7 +47,7 @@ const StudentsTable = ({ students, setStudents }) => {
 				))}
 			</div>
 
-			<div className='w-full text-sm bg-gray-100 border-2'>
+			<div className='w-full p-2 text-sm bg-gray-100 border-2'>
 				{showForm ? (
 					<Form setStudents={setStudents} setShowForm={setShowForm} />
 				) : (

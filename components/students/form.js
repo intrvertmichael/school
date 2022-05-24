@@ -14,14 +14,14 @@ const Form = ({ setStudents, setShowForm }) => {
 		<>
 			<button onClick={() => setShowForm(false)}>X</button>
 
-			<h2 className='mb-6 font-bold text-center'> Add Student</h2>
+			<h2 className='mb-3 font-bold text-center'> Add Student</h2>
 
 			<form
 				onSubmit={e => {
 					e.preventDefault()
 					post_student(e, input, reset, setStudents, setInput)
 				}}
-				className='grid grid-cols-4 p-2 pt-0'
+				className='grid grid-cols-4'
 			>
 				<p>
 					<label htmlFor='f_name' className='block'>
@@ -33,7 +33,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='f_name'
 						value={input.f_name}
 						onChange={e => setInput({ ...input, f_name: e.target.value })}
-						className='w-full border-2'
+						className='w-full p-2 border-2'
 					/>
 				</p>
 
@@ -47,7 +47,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='l_name'
 						value={input.l_name}
 						onChange={e => setInput({ ...input, l_name: e.target.value })}
-						className='w-full border-2'
+						className='w-full p-2 border-2'
 					/>
 				</p>
 
@@ -61,7 +61,7 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='age'
 						value={input.age}
 						onChange={e => setInput({ ...input, age: e.target.value })}
-						className='w-full border-2'
+						className='w-full p-2 border-2'
 					/>
 				</p>
 
@@ -75,14 +75,22 @@ const Form = ({ setStudents, setShowForm }) => {
 						name='grade'
 						value={input.grade}
 						onChange={e => setInput({ ...input, grade: e.target.value })}
-						className='w-full border-2'
+						className='w-full p-2 border-2'
 					/>
 				</p>
 
-				<input
-					type='submit'
-					className='col-span-4 py-3 mt-3 text-white bg-black rounded'
-				/>
+				<p className='flex flex-row col-span-4 mt-3'>
+					<button
+						onClick={e => {
+							e.preventDefault()
+							setInput(reset)
+						}}
+						className='w-full p-3 bg-gray-200'
+					>
+						Reset
+					</button>
+					<input type='submit' className='w-full p-3 text-white bg-black' />
+				</p>
 			</form>
 		</>
 	)

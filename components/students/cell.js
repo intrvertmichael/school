@@ -18,41 +18,68 @@ const Cell = ({ id, field, text, setStudents }) => {
 		setEditing(false)
 	}
 
-	if (editing) {
-		return (
-			<div className='flex bg-gray-100 border-2 border-b-0 border-r-0'>
-				<form onSubmit={formSubmitted} className='block w-full'>
-					<input
-						type={field === 'grade' || field === 'age' ? 'number' : 'text'}
-						value={input}
-						onKeyDown={e => {
-							if (e.key === 'Escape') {
-								setEditing(false)
-								setInput(text)
-								return
-							}
-						}}
-						onChange={e => setInput(e.target.value)}
-						ref={inputReference}
-						className='block w-full bg-green-100'
-					/>
-				</form>
-				<button
-					onClick={() => setEditing(false)}
-					className='px-2 text-white bg-black'
-				>
-					X
-				</button>
-			</div>
-		)
-	}
-
 	return (
-		<div
-			className='border-2 border-b-0 border-r-0'
-			onClick={() => setEditing(true)}
-		>
+		<div className='border-2 border-b-0 border-r-0'>
+			{editing ? (
+				<Input
+					{...{
+						formSubmitted,
+						field,
+						input,
+						setEditing,
+						setInput,
+						text,
+						inputReference,
+					}}
+				/>
+			) : (
+				<Text {...{ text, setEditing }} />
+			)}
+		</div>
+	)
+}
+
+const Text = ({ text, setEditing }) => {
+	return (
+		<div className='p-2' onClick={() => setEditing(true)}>
 			{text}
+		</div>
+	)
+}
+
+const Input = ({
+	formSubmitted,
+	field,
+	input,
+	setEditing,
+	setInput,
+	text,
+	inputReference,
+}) => {
+	return (
+		<div className='flex bg-black'>
+			<form onSubmit={formSubmitted} className='w-full border-0'>
+				<input
+					type={field === 'grade' || field === 'age' ? 'number' : 'text'}
+					value={input}
+					onKeyDown={e => {
+						if (e.key === 'Escape') {
+							setEditing(false)
+							setInput(text)
+							return
+						}
+					}}
+					onChange={e => setInput(e.target.value)}
+					ref={inputReference}
+					className='block w-full p-2 bg-green-100'
+				/>
+			</form>
+			<button
+				onClick={() => setEditing(false)}
+				className='px-3 py-2 text-white'
+			>
+				X
+			</button>
 		</div>
 	)
 }

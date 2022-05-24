@@ -1,13 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export async function getStaticProps() {
-	return {
-		props: {},
-	}
-}
-
-export default function Home(props) {
+export default function Home() {
 	return (
 		<>
 			<Head>
@@ -16,7 +10,7 @@ export default function Home(props) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<div className={'p-20'}>
+			<div>
 				<Link href='/students'>Students</Link>
 				<h1 className={'text-6xl font-bold'}>School</h1>
 			</div>
