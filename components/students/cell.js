@@ -60,7 +60,11 @@ const Input = ({
 		<div className='flex bg-black'>
 			<form onSubmit={formSubmitted} className='w-full border-0'>
 				<input
-					type={field === 'grade' || field === 'age' ? 'number' : 'text'}
+					type={
+						field === 'grade' || field === 'age' || field === 'class'
+							? 'number'
+							: 'text'
+					}
 					value={input}
 					onKeyDown={e => {
 						if (e.key === 'Escape') {

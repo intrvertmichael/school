@@ -7,6 +7,7 @@ const Form = ({ setStudents, setShowForm }) => {
 		l_name: '',
 		age: 0,
 		grade: 0,
+		class: 0,
 	}
 	const [input, setInput] = useState(reset)
 
@@ -21,7 +22,7 @@ const Form = ({ setStudents, setShowForm }) => {
 					e.preventDefault()
 					post_student(e, input, reset, setStudents, setInput)
 				}}
-				className='grid grid-cols-4'
+				className='grid grid-cols-5'
 			>
 				<p>
 					<label htmlFor='f_name' className='block'>
@@ -79,7 +80,21 @@ const Form = ({ setStudents, setShowForm }) => {
 					/>
 				</p>
 
-				<p className='flex flex-row col-span-4 mt-3'>
+				<p>
+					<label htmlFor='class' className='block'>
+						Class:
+					</label>
+					<input
+						type='number'
+						id='class'
+						name='class'
+						value={input.class}
+						onChange={e => setInput({ ...input, class: e.target.value })}
+						className='w-full p-2 border-2'
+					/>
+				</p>
+
+				<p className='flex flex-row col-span-5 mt-3'>
 					<button
 						onClick={e => {
 							e.preventDefault()

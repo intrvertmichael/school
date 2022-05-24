@@ -6,13 +6,15 @@ import { deleteStudent } from './apiCalls'
 const StudentsTable = ({ students, setStudents }) => {
 	const [showForm, setShowForm] = useState(false)
 
-	const fields = ['first_name', 'last_name', 'age', 'grade']
+	const fields = ['first_name', 'last_name', 'age', 'grade', 'class']
+
+	console.log(students)
 
 	return (
 		<div className='bg-white rounded'>
 			<h3 className='font-bold'>All Students</h3>
 
-			<div className='grid w-full grid-cols-5 text-sm'>
+			<div className='grid w-full grid-cols-6 text-sm'>
 				{fields.map((field, key) => (
 					<div
 						key={key}
@@ -30,7 +32,7 @@ const StudentsTable = ({ students, setStudents }) => {
 								key={key}
 								id={student.id}
 								field={field}
-								text={student[field]}
+								text={student[field] || '-'}
 								setStudents={setStudents}
 							/>
 						))}
