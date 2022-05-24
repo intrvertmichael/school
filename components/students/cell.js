@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { editStudent } from './apiCalls'
 
 const Cell = ({ id, field, text, setStudents }) => {
 	const [input, setInput] = useState(text)
@@ -11,31 +12,15 @@ const Cell = ({ id, field, text, setStudents }) => {
 		}
 	}, [editing])
 
-	async function editStudent() {
-		const res = await fetch('./api/students', {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				id: id,
-				field: field,
-				value: input,
-			}),
-		})
-		const data = await res.json()
-		setStudents(data.students)
-	}
-
 	async function formSubmitted(e) {
 		e.preventDefault()
-		await editStudent()
+		await editStudent(id, field, input, setStudents)
 		setEditing(false)
 	}
 
 	if (editing) {
 		return (
-			<div className='flex bg-gray-100 border-2 border-r-0'>
+			<div className='flex bg-gray-100 border-2 border-b-0 border-r-0'>
 				<form onSubmit={formSubmitted} className='block w-full'>
 					<input
 						type={field === 'grade' || field === 'age' ? 'number' : 'text'}
@@ -63,7 +48,10 @@ const Cell = ({ id, field, text, setStudents }) => {
 	}
 
 	return (
-		<div className='border-2 border-r-0' onClick={() => setEditing(true)}>
+		<div
+			className='border-2 border-b-0 border-r-0'
+			onClick={() => setEditing(true)}
+		>
 			{text}
 		</div>
 	)

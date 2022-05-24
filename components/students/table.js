@@ -1,21 +1,10 @@
 import React, { useState } from 'react'
 import Form from './form'
 import Cell from './cell'
+import { deleteStudent } from './apiCalls'
 
 const StudentsTable = ({ students, setStudents }) => {
 	const [showForm, setShowForm] = useState(false)
-
-	async function deleteStudent(id) {
-		const res = await fetch('./api/students', {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ id: id }),
-		})
-		const data = await res.json()
-		setStudents(data.students)
-	}
 
 	const fields = ['first_name', 'last_name', 'age', 'grade']
 
@@ -43,9 +32,9 @@ const StudentsTable = ({ students, setStudents }) => {
 							/>
 						))}
 
-						<div className='border-2'>
+						<div className='border-2 border-b-0'>
 							<button
-								onClick={() => deleteStudent(student.id)}
+								onClick={() => deleteStudent(student.id, setStudents)}
 								className='font-bold text-red-600'
 							>
 								X
@@ -55,7 +44,7 @@ const StudentsTable = ({ students, setStudents }) => {
 				))}
 			</div>
 
-			<div className='w-full text-sm bg-gray-100 border-2 border-t-0'>
+			<div className='w-full text-sm bg-gray-100 border-2'>
 				{showForm ? (
 					<Form setStudents={setStudents} setShowForm={setShowForm} />
 				) : (

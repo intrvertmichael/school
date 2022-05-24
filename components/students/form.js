@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { post_student } from './apiCalls'
 
 const Form = ({ setStudents, setShowForm }) => {
 	const reset = {
@@ -9,33 +10,19 @@ const Form = ({ setStudents, setShowForm }) => {
 	}
 	const [input, setInput] = useState(reset)
 
-	async function post_student(e) {
-		e.preventDefault()
-
-		const res = await fetch('./api/students', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				f_name: input.f_name,
-				l_name: input.l_name,
-				age: input.age,
-				grade: input.grade,
-			}),
-		})
-		const data = await res.json()
-		setStudents(data.students)
-		setInput(reset)
-	}
-
 	return (
 		<>
 			<button onClick={() => setShowForm(false)}>X</button>
 
 			<h2 className='mb-6 font-bold text-center'> Add Student</h2>
 
-			<form onSubmit={post_student} className='grid grid-cols-4 p-2 pt-0'>
+			<form
+				onSubmit={e => {
+					e.preventDefault()
+					post_student(e, input, reset, setStudents, setInput)
+				}}
+				className='grid grid-cols-4 p-2 pt-0'
+			>
 				<p>
 					<label htmlFor='f_name' className='block'>
 						First Name:
