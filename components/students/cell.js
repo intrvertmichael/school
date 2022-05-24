@@ -38,7 +38,7 @@ const Cell = ({ id, field, text, setStudents }) => {
 			<div className='flex bg-gray-100 border-2 border-r-0'>
 				<form onSubmit={formSubmitted} className='block w-full'>
 					<input
-						type='text'
+						type={field === 'grade' || field === 'age' ? 'number' : 'text'}
 						value={input}
 						onKeyDown={e => {
 							if (e.key === 'Escape') {
