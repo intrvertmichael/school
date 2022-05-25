@@ -3,10 +3,10 @@ import Form from './form'
 import Cell from './cell'
 import { deleteStudent } from './apiCalls'
 
+export const fields = ['first_name', 'last_name', 'age', 'grade', 'class']
+
 const StudentsTable = ({ students, setStudents }) => {
 	const [showForm, setShowForm] = useState(false)
-
-	const fields = ['first_name', 'last_name', 'age', 'grade', 'class']
 
 	console.log(students)
 
