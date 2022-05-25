@@ -14,7 +14,7 @@ export async function editStudent(id, field, input, setStudents) {
 	setStudents(data.students)
 }
 
-export async function post_student(e, input, reset, setStudents, setInput) {
+export async function post_student(e, input, setStudents, setInput, setError) {
 	e.preventDefault()
 
 	const res = await fetch('./api/students', {
@@ -23,15 +23,23 @@ export async function post_student(e, input, reset, setStudents, setInput) {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			f_name: input.f_name,
-			l_name: input.l_name,
+			f_name: input.first_name,
+			l_name: input.last_name,
 			age: input.age,
 			grade: input.grade,
+			class: input.class,
 		}),
 	})
+
 	const data = await res.json()
-	setStudents(data.students)
-	setInput(reset)
+
+	console.log(res.status)
+	if (res.status === 200) {
+		setStudents(data.students)
+		setInput({})
+	} else {
+		setError(data)
+	}
 }
 
 export async function deleteStudent(id, setStudents) {

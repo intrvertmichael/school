@@ -4,20 +4,28 @@ import { fields } from './table'
 
 const Form = ({ setStudents, setShowForm }) => {
 	const [input, setInput] = useState({})
+	const [error, setError] = useState('')
+
+	const submitForm = e => {
+		e.preventDefault()
+		console.log(input)
+		post_student(e, input, setStudents, setInput, setError)
+	}
 
 	return (
 		<>
 			<button onClick={() => setShowForm(false)}>X</button>
 
+			{error && (
+				<div className='p-3 mb-3 text-center text-white bg-red-600 rounded'>
+					<p>{error.message}</p>
+					<p>{error.detail}</p>
+				</div>
+			)}
+
 			<h2 className='mb-3 font-bold text-center'> Add Student</h2>
 
-			<form
-				onSubmit={e => {
-					e.preventDefault()
-					post_student(e, input, reset, setStudents, setInput)
-				}}
-				className='grid grid-cols-5'
-			>
+			<form onSubmit={submitForm} className='grid grid-cols-5'>
 				{fields.map((field, key) => (
 					<p key={key}>
 						<label htmlFor={field} className='block'>
@@ -38,18 +46,10 @@ const Form = ({ setStudents, setShowForm }) => {
 					</p>
 				))}
 
-				<p className='flex flex-row col-span-5 mt-3'>
-					<button
-						onClick={e => {
-							e.preventDefault()
-							setInput(reset)
-						}}
-						className='w-full p-3 bg-gray-200'
-					>
-						Reset
-					</button>
-					<input type='submit' className='w-full p-3 text-white bg-black' />
-				</p>
+				<input
+					type='submit'
+					className='w-full col-span-5 p-3 mt-3 text-white bg-black'
+				/>
 			</form>
 		</>
 	)
