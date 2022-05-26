@@ -1,7 +1,40 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import pg from '../db'
 
-export default function Home() {
+export async function getStaticProps() {
+	const res = await pg.query(
+		`
+		select classes.id, classes.subject, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
+		left join teachers on classes.teacher = teachers.id
+		left join students on classes.id = students.class
+		`,
+	)
+
+	const data = {}
+
+	res.rows.forEach(row => {
+		data[row.id] ??= {
+			subject: row.subject,
+			teacher: row.teacher,
+			students: [],
+		}
+		data[row.id].students.push(`${row.first_name} ${row.last_name}`)
+	})
+
+	return {
+		props: {
+			data: data,
+		},
+	}
+}
+
+const capitalize = s => {
+	if (typeof s !== 'string') return ''
+	return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+export default function Home({ data }) {
 	return (
 		<>
 			<Head>
@@ -12,7 +45,30 @@ export default function Home() {
 
 			<div>
 				<Link href='/students'>Students</Link>
-				<h1 className={'text-6xl font-bold'}>School</h1>
+				<h1 className={'text-6xl font-bold py-6'}>School</h1>
+
+				<div className='flex gap-3'>
+					{Object.keys(data).map((id, key) => {
+						const classroom = data[id]
+
+						return (
+							<div key={key} className='p-6 border-2 rounded'>
+								<h1 className='text-3xl font-bold'>
+									{capitalize(classroom.subject)} Class
+								</h1>
+								<h3>Teacher: {capitalize(classroom.teacher)}</h3>
+
+								<ul className='mt-3'>
+									{classroom.students.map((student, key) => (
+										<li key={key} className=''>
+											- {student}
+										</li>
+									))}
+								</ul>
+							</div>
+						)
+					})}
+				</div>
 			</div>
 		</>
 	)

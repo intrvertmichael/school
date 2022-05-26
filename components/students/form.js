@@ -8,7 +8,6 @@ const Form = ({ setStudents, setShowForm }) => {
 
 	const submitForm = e => {
 		e.preventDefault()
-		console.log(input)
 		post_student(e, input, setStudents, setInput, setError)
 	}
 

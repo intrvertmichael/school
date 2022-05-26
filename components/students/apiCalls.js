@@ -33,7 +33,6 @@ export async function post_student(e, input, setStudents, setInput, setError) {
 
 	const data = await res.json()
 
-	console.log(res.status)
 	if (res.status === 200) {
 		setStudents(data.students)
 		setInput({})

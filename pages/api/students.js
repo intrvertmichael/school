@@ -1,8 +1,8 @@
 import pg from '../../db'
 
 export default async function handler(req, res) {
-	console.log('req.method = ', req.method)
-	console.log('req.body = ', req.body)
+	// console.log('req.method = ', req.method)
+	// console.log('req.body = ', req.body)
 
 	// -> GET
 	let text = 'select * from students'
@@ -30,9 +30,6 @@ export default async function handler(req, res) {
 	try {
 		await pg.query(text, values)
 	} catch (error) {
-		console.log(error.message)
-		console.log(error.detail)
-
 		res.status(500).json({
 			message: error.message,
 			detail: error.detail,

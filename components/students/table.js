@@ -8,8 +8,6 @@ export const fields = ['first_name', 'last_name', 'age', 'grade', 'class']
 const StudentsTable = ({ students, setStudents }) => {
 	const [showForm, setShowForm] = useState(false)
 
-	console.log(students)
-
 	return (
 		<div className='bg-white rounded'>
 			<h3 className='font-bold'>All Students</h3>
