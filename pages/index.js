@@ -52,9 +52,10 @@ export default function Home({ data }) {
 						const classroom = data[id]
 
 						return (
-							<div key={key} className='p-6 border-2 rounded'>
+							<div key={key} className='w-full p-6 border-2 rounded'>
 								<h1 className='text-3xl font-bold'>
-									{capitalize(classroom.subject)} Class
+									{id + '. '}
+									{capitalize(classroom.subject)}
 								</h1>
 								<h3>Teacher: {capitalize(classroom.teacher)}</h3>
 
