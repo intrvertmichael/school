@@ -6,11 +6,13 @@ import Students from '../../components/students'
 import { useState } from 'react'
 
 export async function getStaticProps() {
-	const students = await pg.query('select * from students')
+	const students = await pg.query('select * from students order by id desc')
+	const classes = await pg.query('select id, subject from classes')
 
 	return {
 		props: {
 			students: students.rows,
+			classes: classes.rows,
 		},
 	}
 }
@@ -28,7 +30,11 @@ export default function Home(props) {
 
 			<div>
 				<Link href='/'>Home</Link>
-				<Students students={students} setStudents={setStudents} />
+				<Students
+					students={students}
+					setStudents={setStudents}
+					classes={props.classes}
+				/>
 			</div>
 		</>
 	)

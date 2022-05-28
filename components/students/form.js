@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { post_student } from './apiCalls'
 import { fields } from './table'
 
-const Form = ({ setStudents, setShowForm }) => {
+const Form = ({ setStudents, setShowForm, classes }) => {
 	const [input, setInput] = useState({})
 	const [error, setError] = useState('')
 

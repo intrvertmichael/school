@@ -5,7 +5,7 @@ import { deleteStudent } from './apiCalls'
 
 export const fields = ['first_name', 'last_name', 'age', 'grade', 'class']
 
-const StudentsTable = ({ students, setStudents }) => {
+const StudentsTable = ({ students, setStudents, classes }) => {
 	const [showForm, setShowForm] = useState(false)
 
 	return (
@@ -32,6 +32,7 @@ const StudentsTable = ({ students, setStudents }) => {
 								field={field}
 								text={student[field] || '-'}
 								setStudents={setStudents}
+								classes={classes}
 							/>
 						))}
 
@@ -49,7 +50,7 @@ const StudentsTable = ({ students, setStudents }) => {
 
 			<div className='w-full p-2 text-sm bg-gray-100 border-2'>
 				{showForm ? (
-					<Form setStudents={setStudents} setShowForm={setShowForm} />
+					<Form {...{ setStudents, setShowForm, classes }} />
 				) : (
 					<button onClick={() => setShowForm(true)}>+ Add Student</button>
 				)}

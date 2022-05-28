@@ -19,7 +19,11 @@ export async function getStaticProps() {
 			teacher: row.teacher,
 			students: [],
 		}
-		data[row.id].students.push(`${row.first_name} ${row.last_name}`)
+
+		// if student in class add to obj
+		if (row.first_name) {
+			data[row.id].students.push(`${row.first_name} ${row.last_name}`)
+		}
 	})
 
 	return {
