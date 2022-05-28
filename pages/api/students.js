@@ -31,6 +31,7 @@ export default async function handler(req, res) {
 		await pg.query(text, values)
 	} catch (error) {
 		res.status(500).json({
+			code: error.code,
 			message: error.message,
 			detail: error.detail,
 		})

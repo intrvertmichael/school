@@ -17,6 +17,7 @@ const Form = ({ setStudents, setShowForm }) => {
 
 			{error && (
 				<div className='p-3 mb-3 text-center text-white bg-red-600 rounded'>
+					<h1>{error.code}</h1>
 					<p>{error.message}</p>
 					<p>{error.detail}</p>
 				</div>
