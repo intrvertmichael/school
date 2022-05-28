@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { editStudent } from './apiCalls'
+import InputClass from './InputClass'
 
 const Input = ({ id, setStudents, field, setEditing, text, classes }) => {
 	const [input, setInput] = useState(text)
@@ -17,12 +18,6 @@ const Input = ({ id, setStudents, field, setEditing, text, classes }) => {
 		setEditing(false)
 	}
 
-	async function classSelected(e) {
-		await editStudent(id, field, e.target.value, setStudents)
-		setEditing(false)
-		setInput(e.target.value)
-	}
-
 	const esc_btn = e => {
 		if (e.key === 'Escape') {
 			setEditing(false)
@@ -33,27 +28,17 @@ const Input = ({ id, setStudents, field, setEditing, text, classes }) => {
 
 	if (field === 'class')
 		return (
-			<div className='flex bg-black'>
-				<select
-					name='classes'
-					id='classes'
-					value={input}
-					onChange={classSelected}
-					className='w-full p-2 bg-green-200'
-				>
-					{classes.map((single, key) => (
-						<option key={key} value={single.id}>
-							{single.subject}
-						</option>
-					))}
-				</select>
-				<button
-					onClick={() => setEditing(false)}
-					className='px-3 py-2 text-white'
-				>
-					X
-				</button>
-			</div>
+			<InputClass
+				{...{
+					input,
+					classes,
+					id,
+					field,
+					setStudents,
+					editStudent,
+					setEditing,
+				}}
+			/>
 		)
 	if (field === 'age')
 		return (
