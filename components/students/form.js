@@ -28,7 +28,6 @@ const Form = ({ setStudents, setShowForm, classes }) => {
 
 			<form onSubmit={submitForm} className='grid grid-cols-4'>
 				{fields.map((field, key) => {
-					console.log('field', field)
 					if (field === 'class')
 						return (
 							<InputClass

@@ -17,8 +17,6 @@ const InputClass = ({
 		}
 	}
 
-	console.log(input)
-
 	const wrapperStyle = `flex ${id ? 'bg-black' : 'flex-col'}`
 	const inputStyle = `w-full p-2 ${id ? 'bg-green-200' : 'border-2'}`
 
