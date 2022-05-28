@@ -66,6 +66,8 @@ const Input = ({ id, setStudents, field, setEditing, text, classes }) => {
 						onChange={e => setInput(e.target.value)}
 						ref={inputReference}
 						className='block w-full p-2 bg-green-100'
+						min='0'
+						max='50'
 					/>
 				</form>
 				<button
@@ -87,6 +89,8 @@ const Input = ({ id, setStudents, field, setEditing, text, classes }) => {
 						onChange={e => setInput(e.target.value)}
 						ref={inputReference}
 						className='block w-full p-2 bg-green-100'
+						minLength='2'
+						maxLength='15'
 					/>
 				</form>
 				<button
