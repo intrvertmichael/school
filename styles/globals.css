@@ -5,3 +5,19 @@
 body {
 	font-size: 1.5rem;
 }
+
+.science::after {
+	content: '🚀';
+	position: absolute;
+	top: 0;
+	right: 1rem;
+	font-size: 4rem;
+}
+
+.math::after {
+	content: '🧮';
+	position: absolute;
+	top: 0;
+	right: 1rem;
+	font-size: 4rem;
+}

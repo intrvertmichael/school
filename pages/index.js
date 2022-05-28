@@ -55,10 +55,12 @@ export default function Home({ data }) {
 					{Object.keys(data).map((id, key) => {
 						const classroom = data[id]
 
+						const classes =
+							'w-full p-6 border-2 rounded-md relative ' + classroom.subject
+
 						return (
-							<div key={key} className='w-full p-6 border-2 rounded'>
+							<div key={key} className={classes}>
 								<h1 className='text-3xl font-bold'>
-									{id + '. '}
 									{capitalize(classroom.subject)}
 								</h1>
 								<h3>Teacher: {capitalize(classroom.teacher)}</h3>
