@@ -45,7 +45,7 @@ export default function Home({ data }) {
 			<div>
 				<h1 className={'text-6xl mb-6 font-bold'}>School</h1>
 
-				<div className='flex flex-col gap-3 md:flex-row'>
+				<div className='grid gap-3 lg:grid-cols-2 xl:grid-cols-3'>
 					{Object.keys(data).map((id, key) => {
 						const classroom = data[id]
 
@@ -69,6 +69,13 @@ export default function Home({ data }) {
 							</div>
 						)
 					})}
+					<div className='relative w-full p-6 border-2 rounded-md bg-gray-50 add-class'>
+						<h1 className='mb-3 text-3xl font-bold'>Add a class</h1>
+						<p className='w-3/4 text-sm'>
+							Add a class to the school. Here you will be able to choose your
+							own subject and assign it to one of the existing teachers.
+						</p>
+					</div>
 				</div>
 			</div>
 		</>

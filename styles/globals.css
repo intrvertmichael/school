@@ -21,3 +21,11 @@ body {
 	right: 1rem;
 	font-size: 4rem;
 }
+
+.add-class::after {
+	content: '📓';
+	position: absolute;
+	top: 0;
+	right: 1rem;
+	font-size: 4rem;
+}
