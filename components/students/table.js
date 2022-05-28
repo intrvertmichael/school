@@ -9,9 +9,7 @@ const StudentsTable = ({ students, setStudents, classes }) => {
 	const [showForm, setShowForm] = useState(false)
 
 	return (
-		<div className='bg-white rounded'>
-			<h3 className='font-bold'>All Students</h3>
-
+		<div className='overflow-hidden rounded'>
 			<div className='grid w-full grid-cols-5 text-sm'>
 				{fields.map((field, key) => (
 					<div
