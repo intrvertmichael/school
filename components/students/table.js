@@ -3,7 +3,7 @@ import Form from './form'
 import Cell from './cell'
 import { deleteStudent } from './apiCalls'
 
-export const fields = ['first_name', 'last_name', 'age', 'grade', 'class']
+export const fields = ['first_name', 'last_name', 'age', 'class']
 
 const StudentsTable = ({ students, setStudents, classes }) => {
 	const [showForm, setShowForm] = useState(false)
@@ -12,7 +12,7 @@ const StudentsTable = ({ students, setStudents, classes }) => {
 		<div className='bg-white rounded'>
 			<h3 className='font-bold'>All Students</h3>
 
-			<div className='grid w-full grid-cols-6 text-sm'>
+			<div className='grid w-full grid-cols-5 text-sm'>
 				{fields.map((field, key) => (
 					<div
 						key={key}

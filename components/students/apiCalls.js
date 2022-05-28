@@ -26,7 +26,6 @@ export async function post_student(e, input, setStudents, setInput, setError) {
 			f_name: input.first_name,
 			l_name: input.last_name,
 			age: input.age,
-			grade: input.grade,
 			class: input.class,
 		}),
 	})

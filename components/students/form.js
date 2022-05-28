@@ -25,18 +25,14 @@ const Form = ({ setStudents, setShowForm, classes }) => {
 
 			<h2 className='mb-3 font-bold text-center'> Add Student</h2>
 
-			<form onSubmit={submitForm} className='grid grid-cols-5'>
+			<form onSubmit={submitForm} className='grid grid-cols-4'>
 				{fields.map((field, key) => (
 					<p key={key}>
 						<label htmlFor={field} className='block'>
 							{field.split('_').join(' ')}
 						</label>
 						<input
-							type={
-								field === 'grade' || field === 'age' || field === 'class'
-									? 'number'
-									: 'text'
-							}
+							type={field === 'age' || field === 'class' ? 'number' : 'text'}
 							id={field}
 							name={field}
 							value={input[field] ? input[field] : ''}
@@ -48,7 +44,7 @@ const Form = ({ setStudents, setShowForm, classes }) => {
 
 				<input
 					type='submit'
-					className='w-full col-span-5 p-3 mt-3 text-white bg-black'
+					className='w-full col-span-4 p-3 mt-3 text-white bg-black'
 				/>
 			</form>
 		</>

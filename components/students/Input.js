@@ -55,16 +55,33 @@ const Input = ({ id, setStudents, field, setEditing, text, classes }) => {
 				</button>
 			</div>
 		)
+	if (field === 'age')
+		return (
+			<div className='flex bg-black'>
+				<form onSubmit={formSubmitted} className='w-full border-0'>
+					<input
+						type={'number'}
+						onKeyDown={esc_btn}
+						value={input}
+						onChange={e => setInput(e.target.value)}
+						ref={inputReference}
+						className='block w-full p-2 bg-green-100'
+					/>
+				</form>
+				<button
+					onClick={() => setEditing(false)}
+					className='px-3 py-2 text-white'
+				>
+					X
+				</button>
+			</div>
+		)
 	else
 		return (
 			<div className='flex bg-black'>
 				<form onSubmit={formSubmitted} className='w-full border-0'>
 					<input
-						type={
-							field === 'grade' || field === 'age' || field === 'class'
-								? 'number'
-								: 'text'
-						}
+						type={'text'}
 						onKeyDown={esc_btn}
 						value={input}
 						onChange={e => setInput(e.target.value)}
