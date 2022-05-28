@@ -3,14 +3,14 @@ import Form from './form'
 import Cell from './cell'
 import { deleteStudent } from './apiCalls'
 
-export const fields = ['first_name', 'last_name', 'age', 'class']
-
 const StudentsTable = ({ students, setStudents, classes }) => {
+	const fields = Object.keys(students[0]).filter(field => field !== 'id')
 	const [showForm, setShowForm] = useState(false)
 
+	const wrapperStyles = `grid w-full grid-cols-${fields.length + 1} text-sm`
 	return (
 		<div className='overflow-hidden rounded'>
-			<div className='grid w-full grid-cols-5 text-sm'>
+			<div className={wrapperStyles}>
 				{fields.map((field, key) => (
 					<div
 						key={key}
@@ -48,7 +48,7 @@ const StudentsTable = ({ students, setStudents, classes }) => {
 
 			<div className='w-full p-2 text-sm bg-gray-100 border-2'>
 				{showForm ? (
-					<Form {...{ setStudents, setShowForm, classes }} />
+					<Form {...{ setStudents, setShowForm, classes, fields }} />
 				) : (
 					<button onClick={() => setShowForm(true)}>+ Add Student</button>
 				)}

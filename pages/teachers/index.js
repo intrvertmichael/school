@@ -14,11 +14,11 @@ export async function getStaticProps() {
 	}
 }
 
-const Teacher = () => {
+const Teacher = ({ teachers }) => {
 	return (
 		<>
 			<Nav />
-			<Teachers />
+			<Teachers teachers={teachers} />
 		</>
 	)
 }

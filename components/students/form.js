@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { post_student } from './apiCalls'
 import InputClass from './InputClass'
-import { fields } from './table'
 
-const Form = ({ setStudents, setShowForm, classes }) => {
+const Form = ({ setStudents, setShowForm, classes, fields }) => {
 	const [input, setInput] = useState({})
 	const [error, setError] = useState('')
 
