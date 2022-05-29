@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Nav from '../../components/shared/nav'
 import pg from '../../db'
 import Teachers from '../../components/teachers'
@@ -14,11 +15,13 @@ export async function getStaticProps() {
 	}
 }
 
-const Teacher = ({ teachers }) => {
+const Teacher = props => {
+	const [teachers, setTeachers] = useState(props.teachers)
+
 	return (
 		<>
 			<Nav />
-			<Teachers teachers={teachers} />
+			<Teachers teachers={teachers} setTeachers={setTeachers} />
 		</>
 	)
 }

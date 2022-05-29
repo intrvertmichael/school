@@ -1,10 +1,6 @@
 import pg from '../../db'
 
 export default async function handler(req, res) {
-	// console.log('req.method = ', req.method)
-	// console.log('req.body = ', req.body)
-
-	// -> GET
 	let text = 'select * from students'
 	let values = []
 
@@ -18,7 +14,6 @@ export default async function handler(req, res) {
 	} else if (req.method === 'DELETE') {
 		text = 'delete from students where id=$1'
 		values = [req.body.id]
-	} else {
 	}
 
 	try {
