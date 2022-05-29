@@ -17,18 +17,15 @@ const InputClass = ({
 		}
 	}
 
-	const wrapperStyle = `flex ${id ? 'bg-black' : 'flex-col'}`
-	const inputStyle = `w-full p-2 ${id ? 'bg-green-200' : 'border-2'}`
-
 	return (
-		<div className={wrapperStyle}>
+		<div className={`flex ${id ? 'bg-black' : 'flex-col'}`}>
 			{!id && <label value={0}>class</label>}
 			<select
 				name='classes'
 				id='classes'
 				value={id ? input : input.class}
 				onChange={classSelected}
-				className={inputStyle}
+				className={`w-full p-2 ${id ? 'bg-green-200' : 'border-2'}`}
 			>
 				<option disabled>Choose a Class:</option>
 

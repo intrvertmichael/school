@@ -7,10 +7,9 @@ const StudentsTable = ({ students, setStudents, classes }) => {
 	const fields = Object.keys(students[0]).filter(field => field !== 'id')
 	const [showForm, setShowForm] = useState(false)
 
-	const wrapperStyles = `grid w-full grid-cols-${fields.length + 1} text-sm`
 	return (
 		<div className='overflow-hidden rounded'>
-			<div className={wrapperStyles}>
+			<div className={`grid w-full grid-cols-${fields.length + 1} text-sm`}>
 				{fields.map((field, key) => (
 					<div
 						key={key}
