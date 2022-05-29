@@ -5,7 +5,7 @@ import pg from '../../db'
 import Students from '../../components/students'
 
 export async function getStaticProps() {
-	const students = await pg.query('select * from students order by id desc')
+	const students = await pg.query('select * from students order by id asc')
 	const classes = await pg.query('select id, subject from classes')
 
 	return {

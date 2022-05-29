@@ -9,7 +9,7 @@ const TeachersTable = ({ teachers, setTeachers }) => {
 
 	return (
 		<div className='overflow-hidden rounded'>
-			<div className={`grid grid-cols-${fields.length + 1} text-sm`}>
+			<div className='grid grid-cols-3 text-sm'>
 				{fields.map((field, key) => (
 					<div
 						key={key}

@@ -25,7 +25,7 @@ const Form = ({ setTeachers, setShowForm, fields }) => {
 
 			<h2 className='mb-3 font-bold text-center'> Add Teacher</h2>
 
-			<form onSubmit={submitForm} className={`grid grid-cols-${fields.length}`}>
+			<form onSubmit={submitForm} className='grid grid-cols-2'>
 				{fields.map((field, key) => {
 					return (
 						<p key={key}>
