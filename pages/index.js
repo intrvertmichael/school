@@ -47,7 +47,6 @@ export default function Home({ initialClasses, teachers }) {
 	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)
 
-	console.log(classes)
 	return (
 		<>
 			<Nav />

@@ -17,8 +17,6 @@ export async function editStudent(id, field, input, setStudents) {
 export async function postClass(e, input, setClasses, setInput, setError) {
 	e.preventDefault()
 
-	console.log(input)
-
 	const res = await fetch('./api/classes', {
 		method: 'POST',
 		headers: {
