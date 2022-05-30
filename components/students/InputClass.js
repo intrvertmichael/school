@@ -23,11 +23,14 @@ const InputClass = ({
 			<select
 				name='classes'
 				id='classes'
+				// defaultValue={id ? input : '0'}
 				value={id ? input : input.class}
 				onChange={classSelected}
 				className={`w-full p-2 ${id ? 'bg-green-200' : 'border-2'}`}
 			>
-				<option disabled>Choose a Class:</option>
+				<option disabled value='0'>
+					Choose a Class:
+				</option>
 
 				{classes.map((single, key) => (
 					<option key={key} value={single.id}>

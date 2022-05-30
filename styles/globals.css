@@ -29,3 +29,7 @@ body {
 	right: 1rem;
 	font-size: 4rem;
 }
+
+.add-class:hover {
+	cursor: pointer;
+}
