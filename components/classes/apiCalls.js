@@ -32,6 +32,7 @@ export async function postClass(
 		body: JSON.stringify({
 			subject: input.subject,
 			teacher: input.teacher,
+			icon: input.icon,
 		}),
 	})
 

@@ -7,7 +7,7 @@ import ClassesForm from '../components/classes/form'
 export async function getStaticProps() {
 	const res = await pg.query(
 		`
-		select classes.id, classes.subject, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
+		select classes.id, classes.subject, classes.icon, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
 		left join teachers on classes.teacher = teachers.id
 		left join students on classes.id = students.class
 		`,
@@ -19,6 +19,7 @@ export async function getStaticProps() {
 		data[row.id] ??= {
 			subject: row.subject,
 			teacher: row.teacher,
+			icon: row.icon,
 			students: [],
 		}
 
@@ -65,6 +66,10 @@ export default function Home({ initialClasses, teachers }) {
 									'w-full p-6 border-2 rounded-md relative ' + classroom.subject
 								}
 							>
+								<div className='absolute text-6xl top-3 right-3'>
+									{classroom.icon}
+								</div>
+
 								<h1 className='text-3xl font-bold'>
 									{capitalize(classroom.subject)}
 								</h1>
@@ -89,7 +94,7 @@ export default function Home({ initialClasses, teachers }) {
 					)}
 					{!showForm && (
 						<div
-							className='relative w-full p-6 border-2 rounded-md bg-gray-50 add-class hover:border-slate-400'
+							className='relative w-full p-6 border-2 rounded-md cursor-pointer bg-gray-50 add-class hover:border-slate-400'
 							onClick={() => setShowForm(true)}
 						>
 							<h1 className='mb-3 text-3xl font-bold'>Add a class</h1>

@@ -5,8 +5,8 @@ export default async function handler(req, res) {
 	let values = []
 
 	if (req.method === 'POST') {
-		text = 'insert into classes (subject, teacher) values ($1, $2)'
-		values = [req.body.subject, req.body.teacher]
+		text = 'insert into classes (subject, teacher, icon) values ($1, $2, $3)'
+		values = [req.body.subject, req.body.teacher, req.body.icon]
 	} else if (req.method === 'PUT') {
 		// text = `UPDATE teachers SET ${req.body.field} = $1 WHERE id = $2`
 		// values = [req.body.value, req.body.id]
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
 	const newRes = await pg.query(
 		`
-		select classes.id, classes.subject, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
+		select classes.id, classes.subject, classes.icon, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
 		left join teachers on classes.teacher = teachers.id
 		left join students on classes.id = students.class
 		`,

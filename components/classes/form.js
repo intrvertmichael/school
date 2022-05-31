@@ -70,7 +70,7 @@ const ClassesForm = ({ setClasses, setShowForm, teachers }) => {
 					value={input.icon}
 					onChange={e => setInput({ ...input, icon: e.target.value })}
 					minLength='0'
-					maxLength='1'
+					maxLength='2'
 					className='px-3 py-2 border-2'
 				/>
 				<input
