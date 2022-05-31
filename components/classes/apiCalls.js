@@ -14,7 +14,14 @@ export async function editStudent(id, field, input, setStudents) {
 	setStudents(data.students)
 }
 
-export async function postClass(e, input, setClasses, setInput, setError) {
+export async function postClass(
+	e,
+	input,
+	setClasses,
+	setInput,
+	setError,
+	setShowForm,
+) {
 	e.preventDefault()
 
 	const res = await fetch('./api/classes', {
@@ -33,6 +40,7 @@ export async function postClass(e, input, setClasses, setInput, setError) {
 	if (res.status === 200) {
 		setClasses(data.classes)
 		setInput({})
+		setShowForm(false)
 	} else {
 		setError(data)
 	}

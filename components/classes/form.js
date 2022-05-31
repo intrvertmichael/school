@@ -8,22 +8,30 @@ const ClassesForm = ({ setClasses, setShowForm, teachers }) => {
 
 	function formSubmitted(e) {
 		e.preventDefault()
-		postClass(e, input, setClasses, setInput, setError)
-		setShowForm(false)
+		postClass(e, input, setClasses, setInput, setError, setShowForm)
 	}
 
 	return (
-		<div className='relative w-full p-6 border-2 rounded-md bg-gray-50'>
+		<div className='relative w-full border-2 rounded-md bg-gray-50 hover:border-slate-400'>
 			<button
 				onClick={() => setShowForm(false)}
-				className='absolute top-3 right-6'
+				className='absolute top-2 right-3'
 			>
 				X
 			</button>
 
-			{error && <div>{error}</div>}
+			{error && (
+				<div className='px-8 py-3 text-sm text-white bg-red-600'>
+					<h1>{error.code}</h1>
+					<p>{error.message}</p>
+					<p>{error.detail}</p>
+				</div>
+			)}
 
-			<form onSubmit={formSubmitted}>
+			<form
+				onSubmit={formSubmitted}
+				className='flex flex-col w-3/4 mx-auto my-3'
+			>
 				<input
 					type='text'
 					id='subject'
@@ -33,7 +41,7 @@ const ClassesForm = ({ setClasses, setShowForm, teachers }) => {
 					onChange={e => setInput({ ...input, subject: e.target.value })}
 					minLength='0'
 					maxLength='20'
-					className='p-1 border-2'
+					className='px-3 py-2 border-2'
 				/>
 
 				<select
@@ -58,14 +66,17 @@ const ClassesForm = ({ setClasses, setShowForm, teachers }) => {
 					type='text'
 					id='icon'
 					name='icon'
-					placeholder='Icon'
+					placeholder='Emoji Icon'
 					value={input.icon}
 					onChange={e => setInput({ ...input, icon: e.target.value })}
 					minLength='0'
 					maxLength='1'
-					className='p-1 border-2'
+					className='px-3 py-2 border-2'
 				/>
-				<input type='submit' />
+				<input
+					type='submit'
+					className='block px-3 py-1 mt-3 text-white rounded bg-slate-600'
+				/>
 			</form>
 		</div>
 	)
