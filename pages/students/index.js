@@ -19,6 +19,8 @@ export async function getStaticProps() {
 export default function Home(props) {
 	const [students, setStudents] = useState(props.students)
 
+	if (!props.students) return <div>failed</div>
+
 	return (
 		<>
 			<Nav />

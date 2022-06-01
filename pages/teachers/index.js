@@ -18,6 +18,8 @@ export async function getStaticProps() {
 const Teacher = props => {
 	const [teachers, setTeachers] = useState(props.teachers)
 
+	if (!props.teachers) return <div>failed</div>
+
 	return (
 		<>
 			<Nav />

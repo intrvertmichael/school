@@ -48,6 +48,8 @@ export default function Home({ initialClasses, teachers }) {
 	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)
 
+	if (!initialClasses || !teachers) return <div>failed</div>
+
 	return (
 		<>
 			<Nav />
