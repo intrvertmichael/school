@@ -8,4 +8,8 @@ const pg = new Pool({
 	database: process.env.DB_DB,
 })
 
+pg.connect(() => {
+	console.log('connected to db')
+})
+
 export default pg
