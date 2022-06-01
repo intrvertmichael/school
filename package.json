@@ -6,6 +6,7 @@
 		"node": "16.14.0",
 		"npm": "8.4.1"
 	},
+	"heroku-run-build-script": true,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
