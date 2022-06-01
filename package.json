@@ -8,6 +8,7 @@
 	},
 	"heroku-run-build-script": true,
 	"scripts": {
+		"heroku-prebuild": "npm run build",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
