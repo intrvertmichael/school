@@ -4,7 +4,7 @@ import pg from '../db'
 
 import ClassesForm from '../components/classes/form'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const res = await pg.query(
 		`
 		select classes.id, classes.subject, classes.icon, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes

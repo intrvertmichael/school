@@ -3,7 +3,7 @@ import Nav from '../../components/shared/nav'
 import pg from '../../db'
 import Teachers from '../../components/teachers'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const teachers = await pg.query('select * from teachers order by id asc')
 	const classes = await pg.query('select id, subject from classes')
 
