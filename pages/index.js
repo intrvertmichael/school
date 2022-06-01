@@ -15,7 +15,7 @@ export async function getServerSideProps() {
 
 	const data = {}
 
-	res.rows.forEach(row => {
+	res.rows?.forEach(row => {
 		data[row.id] ??= {
 			subject: row.subject,
 			teacher: row.teacher,
@@ -45,6 +45,7 @@ const capitalize = s => {
 }
 
 export default function Home({ initialClasses, teachers }) {
+	console.log(initialClasses, teachers)
 	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)
 
