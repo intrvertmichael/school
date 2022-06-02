@@ -5,37 +5,41 @@ import pg from '../db'
 import ClassesForm from '../components/classes/form'
 
 export async function getServerSideProps() {
-	const res = await pg.query(
-		`
-		select classes.id, classes.subject, classes.icon, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
-		left join teachers on classes.teacher = teachers.id
-		left join students on classes.id = students.class
-		`,
-	)
+	try {
+		const res = await pg.query(
+			`
+			select classes.id, classes.subject, classes.icon, teachers.last_name teacher, students.first_name first_name, students.last_name last_name from classes
+			left join teachers on classes.teacher = teachers.id
+			left join students on classes.id = students.class
+			`,
+		)
 
-	const data = {}
+		const data = {}
 
-	res.rows?.forEach(row => {
-		data[row.id] ??= {
-			subject: row.subject,
-			teacher: row.teacher,
-			icon: row.icon,
-			students: [],
+		res.rows?.forEach(row => {
+			data[row.id] ??= {
+				subject: row.subject,
+				teacher: row.teacher,
+				icon: row.icon,
+				students: [],
+			}
+
+			// if student in class add to obj
+			if (row.first_name) {
+				data[row.id].students.push(`${row.first_name} ${row.last_name}`)
+			}
+		})
+
+		const teachers = await pg.query('select * from teachers order by id asc')
+
+		return {
+			props: {
+				initialClasses: data,
+				teachers: teachers.rows,
+			},
 		}
-
-		// if student in class add to obj
-		if (row.first_name) {
-			data[row.id].students.push(`${row.first_name} ${row.last_name}`)
-		}
-	})
-
-	const teachers = await pg.query('select * from teachers order by id asc')
-
-	return {
-		props: {
-			initialClasses: data,
-			teachers: teachers.rows,
-		},
+	} catch {
+		return { props: {} }
 	}
 }
 
@@ -44,7 +48,7 @@ const capitalize = s => {
 	return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-export default function Home({ initialClasses, teachers }) {
+export default function Home({ initialClasses = [], teachers = [] }) {
 	console.log(initialClasses, teachers)
 	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)
