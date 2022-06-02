@@ -21,7 +21,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home(props) {
-	const [students, setStudents] = useState(props.students)
+	const [students, setStudents] = useState(props.students ? props.students : [])
 
 	if (!props.students) return <div>failed</div>
 
@@ -29,13 +29,11 @@ export default function Home(props) {
 		<>
 			<Nav />
 
-			{props.students && (
-				<Students
-					students={students}
-					setStudents={setStudents}
-					classes={props.classes}
-				/>
-			)}
+			<Students
+				students={students}
+				setStudents={setStudents}
+				classes={props.classes}
+			/>
 		</>
 	)
 }

@@ -20,15 +20,13 @@ export async function getServerSideProps() {
 }
 
 const Teacher = props => {
-	const [teachers, setTeachers] = useState(props.teachers)
+	const [teachers, setTeachers] = useState(props.teachers ? props.teachers : [])
 
 	return (
 		<>
 			<Nav />
 
-			{props.teachers && (
-				<Teachers teachers={teachers} setTeachers={setTeachers} />
-			)}
+			<Teachers teachers={teachers} setTeachers={setTeachers} />
 		</>
 	)
 }
