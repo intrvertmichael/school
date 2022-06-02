@@ -4,14 +4,18 @@ import pg from '../../db'
 import Teachers from '../../components/teachers'
 
 export async function getServerSideProps() {
-	const teachers = await pg.query('select * from teachers order by id asc')
-	const classes = await pg.query('select id, subject from classes')
+	try {
+		const teachers = await pg.query('select * from teachers order by id asc')
+		const classes = await pg.query('select id, subject from classes')
 
-	return {
-		props: {
-			teachers: teachers.rows,
-			classes: classes.rows,
-		},
+		return {
+			props: {
+				teachers: teachers.rows,
+				classes: classes.rows,
+			},
+		}
+	} catch {
+		return { props: {} }
 	}
 }
 
