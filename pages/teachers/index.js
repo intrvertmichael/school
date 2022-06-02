@@ -22,12 +22,13 @@ export async function getServerSideProps() {
 const Teacher = props => {
 	const [teachers, setTeachers] = useState(props.teachers)
 
-	if (!props.teachers) return <div>failed</div>
-
 	return (
 		<>
 			<Nav />
-			<Teachers teachers={teachers} setTeachers={setTeachers} />
+
+			{props.teachers && (
+				<Teachers teachers={teachers} setTeachers={setTeachers} />
+			)}
 		</>
 	)
 }

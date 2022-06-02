@@ -48,7 +48,7 @@ const capitalize = s => {
 	return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-export default function Home({ initialClasses = [], teachers = [] }) {
+export default function Home({ initialClasses, teachers }) {
 	console.log(initialClasses, teachers)
 	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)

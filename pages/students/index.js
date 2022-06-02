@@ -5,14 +5,18 @@ import pg from '../../db'
 import Students from '../../components/students'
 
 export async function getServerSideProps() {
-	const students = await pg.query('select * from students order by id asc')
-	const classes = await pg.query('select id, subject from classes')
+	try {
+		const students = await pg.query('select * from students order by id asc')
+		const classes = await pg.query('select id, subject from classes')
 
-	return {
-		props: {
-			students: students.rows,
-			classes: classes.rows,
-		},
+		return {
+			props: {
+				students: students.rows,
+				classes: classes.rows,
+			},
+		}
+	} catch {
+		return { props: {} }
 	}
 }
 
@@ -25,11 +29,13 @@ export default function Home(props) {
 		<>
 			<Nav />
 
-			<Students
-				students={students}
-				setStudents={setStudents}
-				classes={props.classes}
-			/>
+			{props.students && (
+				<Students
+					students={students}
+					setStudents={setStudents}
+					classes={props.classes}
+				/>
+			)}
 		</>
 	)
 }
