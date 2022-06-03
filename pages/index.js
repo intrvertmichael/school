@@ -38,7 +38,8 @@ export async function getServerSideProps() {
 				teachers: teachers.rows,
 			},
 		}
-	} catch {
+	} catch (error) {
+		console.log(error)
 		return { props: {} }
 	}
 }
@@ -49,7 +50,8 @@ const capitalize = s => {
 }
 
 export default function Home({ initialClasses, teachers }) {
-	console.log((initialClasses = []), (teachers = []))
+	console.log('initialClasses:', initialClasses)
+
 	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)
 

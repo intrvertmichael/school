@@ -8,14 +8,14 @@ export async function getServerSideProps() {
 	try {
 		const students = await pg.query('select * from students order by id asc')
 		const classes = await pg.query('select id, subject from classes')
-
 		return {
 			props: {
 				students: students.rows,
 				classes: classes.rows,
 			},
 		}
-	} catch {
+	} catch (error) {
+		console.log(error)
 		return { props: {} }
 	}
 }
@@ -23,12 +23,9 @@ export async function getServerSideProps() {
 export default function Home(props) {
 	const [students, setStudents] = useState(props.students ? props.students : [])
 
-	if (!props.students) return <div>failed</div>
-
 	return (
 		<>
 			<Nav />
-
 			<Students
 				students={students}
 				setStudents={setStudents}

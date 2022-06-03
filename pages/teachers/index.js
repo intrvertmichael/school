@@ -14,7 +14,8 @@ export async function getServerSideProps() {
 				classes: classes.rows,
 			},
 		}
-	} catch {
+	} catch (error) {
+		console.log(error)
 		return { props: {} }
 	}
 }
@@ -25,7 +26,6 @@ const Teacher = props => {
 	return (
 		<>
 			<Nav />
-
 			<Teachers teachers={teachers} setTeachers={setTeachers} />
 		</>
 	)
