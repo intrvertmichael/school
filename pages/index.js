@@ -14,7 +14,7 @@ export async function getServerSideProps() {
 			`,
 		)
 
-		const data = {}
+		let data = {}
 
 		res.rows?.forEach(row => {
 			data[row.id] ??= {
