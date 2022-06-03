@@ -1,6 +1,8 @@
 import { Pool } from 'pg'
 const env = process.env.NODE_ENV || 'development'
 
+let credentials
+
 if (env === 'development') {
 	credentials = {
 		user: process.env.DB_USER,
