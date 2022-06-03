@@ -52,9 +52,7 @@ const capitalize = s => {
 export default function Home({ initialClasses, teachers = [] }) {
 	console.log('initialClasses:', initialClasses)
 
-	const [classes, setClasses] = useState(
-		initialClasses ? initialClasses : undefined,
-	)
+	const [classes, setClasses] = useState(initialClasses)
 	const [showForm, setShowForm] = useState(false)
 
 	return (
@@ -65,7 +63,7 @@ export default function Home({ initialClasses, teachers = [] }) {
 				<h1 className={'text-6xl mb-6 font-bold'}>School</h1>
 
 				<div className='grid gap-3 lg:grid-cols-2 xl:grid-cols-3'>
-					{classes &&
+					{initialClasses &&
 						Object.keys(classes).map((id, key) => {
 							const classroom = classes[id]
 
