@@ -14,7 +14,6 @@ if (env === 'development') {
 } else {
 	credentials = {
 		connectionString: process.env.DATABASE_URL,
-		ssl: true,
 	}
 }
 
