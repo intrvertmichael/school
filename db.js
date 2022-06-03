@@ -12,7 +12,10 @@ if (env === 'development') {
 		database: process.env.DB_DB,
 	}
 } else {
-	credentials = process.env.DATABASE_URL
+	credentials = {
+		connectionString: process.env.DATABASE_URL,
+		ssl: true,
+	}
 }
 
 const pg = new Pool(credentials)
