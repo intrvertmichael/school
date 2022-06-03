@@ -49,10 +49,12 @@ const capitalize = s => {
 	return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-export default function Home({ initialClasses = {}, teachers = [] }) {
+export default function Home({ initialClasses, teachers = [] }) {
 	console.log('initialClasses:', initialClasses)
 
-	const [classes, setClasses] = useState(initialClasses)
+	const [classes, setClasses] = useState(
+		initialClasses ? initialClasses : undefined,
+	)
 	const [showForm, setShowForm] = useState(false)
 
 	return (
@@ -63,35 +65,37 @@ export default function Home({ initialClasses = {}, teachers = [] }) {
 				<h1 className={'text-6xl mb-6 font-bold'}>School</h1>
 
 				<div className='grid gap-3 lg:grid-cols-2 xl:grid-cols-3'>
-					{Object.keys(classes).map((id, key) => {
-						const classroom = classes[id]
+					{classes &&
+						Object.keys(classes).map((id, key) => {
+							const classroom = classes[id]
 
-						return (
-							<div
-								key={key}
-								className={
-									'w-full p-6 border-2 rounded-md relative ' + classroom.subject
-								}
-							>
-								<div className='absolute text-6xl top-3 right-3'>
-									{classroom.icon}
+							return (
+								<div
+									key={key}
+									className={
+										'w-full p-6 border-2 rounded-md relative ' +
+										classroom.subject
+									}
+								>
+									<div className='absolute text-6xl top-3 right-3'>
+										{classroom.icon}
+									</div>
+
+									<h1 className='text-3xl font-bold'>
+										{capitalize(classroom.subject)}
+									</h1>
+									<h3>Teacher: {capitalize(classroom.teacher)}</h3>
+
+									<ul className='mt-3'>
+										{classroom.students?.map((student, key) => (
+											<li key={key} className=''>
+												- {student}
+											</li>
+										))}
+									</ul>
 								</div>
-
-								<h1 className='text-3xl font-bold'>
-									{capitalize(classroom.subject)}
-								</h1>
-								<h3>Teacher: {capitalize(classroom.teacher)}</h3>
-
-								<ul className='mt-3'>
-									{classroom.students?.map((student, key) => (
-										<li key={key} className=''>
-											- {student}
-										</li>
-									))}
-								</ul>
-							</div>
-						)
-					})}
+							)
+						})}
 					{showForm && (
 						<ClassesForm
 							setClasses={setClasses}
