@@ -2,7 +2,7 @@ import { Pool } from 'pg'
 const env = process.env.NODE_ENV || 'development'
 
 if (env === 'development') {
-	connectionString = {
+	credentials = {
 		user: process.env.DB_USER,
 		password: process.env.DB_PASS,
 		host: process.env.DB_HOST,
@@ -10,13 +10,10 @@ if (env === 'development') {
 		database: process.env.DB_DB,
 	}
 } else {
-	connectionString = {
-		connectionString: process.env.DATABASE_URL,
-		ssl: true,
-	}
+	credentials = process.env.DATABASE_URL
 }
 
-const pg = new Pool(connectionString)
+const pg = new Pool(credentials)
 
 pg.connect(() => {
 	console.log('connected to db')
