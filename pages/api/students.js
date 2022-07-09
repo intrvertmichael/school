@@ -1,4 +1,4 @@
-import pg from '../../db'
+import pg from '../../db/connect'
 
 export default async function handler(req, res) {
 	let text = 'select * from students'

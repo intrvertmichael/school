@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Nav from '../../components/shared/nav'
-import pg from '../../db'
+import pg from '../../db/connect'
 
 import Students from '../../components/students'
 
@@ -8,6 +8,7 @@ export async function getServerSideProps() {
 	try {
 		const students = await pg.query('select * from students order by id asc')
 		const classes = await pg.query('select id, subject from classes')
+
 		return {
 			props: {
 				students: students.rows,

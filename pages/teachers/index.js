@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Nav from '../../components/shared/nav'
-import pg from '../../db'
+import pg from '../../db/connect'
 import Teachers from '../../components/teachers'
 
 export async function getServerSideProps() {
